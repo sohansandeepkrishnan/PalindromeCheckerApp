@@ -1,20 +1,22 @@
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
-        String word = "radar";
-        char[] characters = word.toCharArray();
-        int left = 0;
-        int right = characters.length - 1;
+        String word = "madam";  // Hardcoded string
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
 
         boolean isPalindrome = true;
-        while (left < right) {
+        for (int i = 0; i < word.length(); i++) {
 
-            if (characters[left] != characters[right]) {
+            char poppedChar = stack.pop();
+
+            if (word.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-            left++;
-            right--;
         }
         if (isPalindrome) {
             System.out.println(word + " is a Palindrome");
@@ -23,4 +25,3 @@ public class PalindromeCheckerApp {
         }
     }
 }
-
