@@ -18,4 +18,5 @@ public class Uc2PalindromeCheckerApp {
             System.out.println(word + " is NOT a Palindrome.");
         }
     }
+
 }
