@@ -1,30 +1,32 @@
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+import java.util.Deque;
+import java.util.LinkedList;
 
-        String word = "level";
+    public class PalindromeCheckerApp {
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            queue.add(ch);   // Enqueue
-            stack.push(ch);  // Push
-        }
-        boolean isPalindrome = true;
-        while (!queue.isEmpty()) {
+        public static void main(String[] args) {
 
-            char fromQueue = queue.remove();  // FIFO
-            char fromStack = stack.pop();     // LIFO
+            String word = "racecar";
 
-            if (fromQueue != fromStack) {
-                isPalindrome = false;
-                break;
+            Deque<Character> deque = new LinkedList<>();
+            for (int i = 0; i < word.length(); i++) {
+                deque.addLast(word.charAt(i));
+            }
+
+            boolean isPalindrome = true;
+            while (deque.size() > 1) {
+
+                char front = deque.removeFirst();
+                char rear = deque.removeLast();
+
+                if (front != rear) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+            if (isPalindrome) {
+                System.out.println(word + " is a Palindrome");
+            } else {
+                System.out.println(word + " is NOT a Palindrome");
             }
         }
-        if (isPalindrome) {
-            System.out.println(word + " is a Palindrome");
-        } else {
-            System.out.println(word + " is NOT a Palindrome");
-        }
     }
-}
